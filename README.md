@@ -6,4 +6,4 @@ collection of weather data collected by some mock weather sensors
 ## Technologies 
 * Java Springboot
 * MongoDB
-* 
+
