@@ -3,6 +3,7 @@ package com.example.mockweatherproject.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 // Class to hold the WeatherSensor object
@@ -13,7 +14,8 @@ public class WeatherSensor {
     private String id;
     private String cityName;
     private String countryName;
-    private HashMap<String, List<Float>> sensorData = new HashMap<>();
+
+    private SensorData sensorData;
 
     // Constructor for the WeatherSensor class
     public WeatherSensor(String cityName, String countryName){
@@ -47,11 +49,14 @@ public class WeatherSensor {
         this.countryName = countryName;
     }
 
-    public HashMap<String, List<Float>> getSensorData() {
+
+    public SensorData getSensorData() {
         return sensorData;
     }
 
-    public void setSensorData(HashMap<String, List<Float>> sensorData) {
+    public void setSensorData(SensorData sensorData) {
         this.sensorData = sensorData;
     }
+
+
 }
