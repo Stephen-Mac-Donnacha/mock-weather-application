@@ -1,18 +1,25 @@
 package com.example.mockweatherproject.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.HashMap;
 import java.util.List;
 // Class to hold the WeatherSensor object
+@Document(collection = "weather-sensor-db")
 public class WeatherSensor {
     // Sensor id, will act as the primary key in the database
+    @Id
     private String id;
     private String cityName;
     private String countryName;
     private HashMap<String, List<Float>> sensorData = new HashMap<>();
 
     // Constructor for the WeatherSensor class
-    public WeatherSensor(){
-
+    public WeatherSensor(String cityName, String countryName){
+        super();
+        this.cityName = cityName;
+        this.countryName = countryName;
     }
 
     // Getter and setter methods for the class fields
