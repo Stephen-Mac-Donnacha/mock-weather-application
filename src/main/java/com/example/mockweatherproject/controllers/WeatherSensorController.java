@@ -17,7 +17,8 @@ public class WeatherSensorController {
     public List<WeatherSensor> getAllWeatherSensors(){
         return weatherSensorRepository.findAll();
     }
-    
+
+
     @PostMapping("/CreateWeatherSensor") // POST method to create a weather sensor object
     public void createWeatherSensor(@RequestBody WeatherSensor weatherSensor){
         WeatherSensor ws = weatherSensorRepository.insert(weatherSensor);
