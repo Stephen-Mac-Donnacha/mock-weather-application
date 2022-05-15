@@ -30,7 +30,11 @@ public class WeatherSensor {
     }
 
     public void setId(String id) {
-        this.id = id;
+        if(this.id != null) {
+            this.id = id;
+        } else {
+            System.out.println("Please enter a value for Id");
+        }
     }
 
     public String getCityName() {
@@ -38,7 +42,11 @@ public class WeatherSensor {
     }
 
     public void setCityName(String cityName) {
-        this.cityName = cityName;
+        if(this.cityName != null){
+            this.cityName = cityName;
+        } else {
+            System.out.println("Please enter a value for city name");
+        }
     }
 
     public String getCountryName() {
@@ -46,7 +54,11 @@ public class WeatherSensor {
     }
 
     public void setCountryName(String countryName) {
-        this.countryName = countryName;
+        if(this.countryName != null){
+            this.countryName = countryName;
+        } else {
+            System.out.println("Please enter a value for country name");
+        }
     }
 
 
