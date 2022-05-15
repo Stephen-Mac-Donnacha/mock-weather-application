@@ -32,4 +32,5 @@ and then enter command
     ```
     mongod
     ```
-5. Use Postman to access the APIs
+5. Connect Postman to the running database instance
+6. Use Postman to access the APIs
