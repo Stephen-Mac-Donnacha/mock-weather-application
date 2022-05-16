@@ -3,11 +3,8 @@ package com.example.mockweatherproject.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.List;
 // Class to hold the WeatherSensor object
-@Document(collection = "weather-sensor-db")
+@Document(collection = "weather-sensor-db") // Define which collection the WeatherSensor Objects will be stored in
 public class WeatherSensor {
     // Sensor id, will act as the primary key in the database
     @Id
@@ -15,7 +12,7 @@ public class WeatherSensor {
     private String cityName;
     private String countryName;
 
-    private SensorData sensorData;
+    private SensorData sensorData; // "Attach" a SensorData Object to a WeatherSensor Object, to provide a full overview of the sensor and it's data
 
     // Constructor for the WeatherSensor class
     public WeatherSensor(String cityName, String countryName){
@@ -67,7 +64,11 @@ public class WeatherSensor {
     }
 
     public void setSensorData(SensorData sensorData) {
-        this.sensorData = sensorData;
+        if(this.sensorData != null){
+            this.sensorData = sensorData;
+        } else {
+            System.out.println("Please Enter a valid Object");
+        }
     }
 
 

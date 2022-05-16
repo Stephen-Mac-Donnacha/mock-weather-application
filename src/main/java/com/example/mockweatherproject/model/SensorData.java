@@ -6,18 +6,19 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "weather-data-db")
+@Document(collection = "weather-data-db") // Define collection for the data to be stored in
 public class SensorData {
     @Id
-    private String date;
+    private String date; // @Id signifies this will act as our primary key
     private double temp;
     private double humidity;
     private double windTemp;
 
-    private List<Double> dataList = new ArrayList<>();
+    private List<Double> dataList = new ArrayList<>(); // This List was designed to hold the temp,humidity and windTemp variables in List form
 
-    private HashMap<String, List<Double>> dataHash = new HashMap<>();
+    private HashMap<String, List<Double>> dataHash = new HashMap<>(); // Map a String (i.e. date, to the List of values / data for that day
 
+    // Constructor for the SensorData class
     public SensorData(double temp, double humidity, double windTemp){
         super();
         this.temp = temp;
@@ -25,12 +26,18 @@ public class SensorData {
         this.windTemp = windTemp;
     }
 
+    // Getters and setters for each variable
+    // Try / Catch blocks added to each setter for input validation
     public double getTemp() {
         return temp;
     }
 
     public void setTemp(double temp) {
-        this.temp = temp;
+        try {
+            this.temp = temp;
+        } catch (NumberFormatException e){
+            e.printStackTrace();
+        }
     }
 
     public double getHumidity() {
@@ -38,7 +45,11 @@ public class SensorData {
     }
 
     public void setHumidity(double humidity) {
-        this.humidity = humidity;
+        try {
+            this.humidity = humidity;
+        } catch (NumberFormatException e){
+            e.printStackTrace();
+        }
     }
 
     public double getWindTemp() {
@@ -46,7 +57,11 @@ public class SensorData {
     }
 
     public void setWindTemp(double windTemp) {
-        this.windTemp = windTemp;
+        try {
+            this.windTemp = windTemp;
+        } catch (NumberFormatException e){
+            e.printStackTrace();
+        }
     }
 
     public String getDate() {
