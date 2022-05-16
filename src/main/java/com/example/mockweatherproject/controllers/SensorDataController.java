@@ -1,15 +1,9 @@
 package com.example.mockweatherproject.controllers;
 
 import com.example.mockweatherproject.model.SensorData;
-import com.example.mockweatherproject.model.WeatherSensor;
 import com.example.mockweatherproject.repositories.SensorDataRepository;
-import com.example.mockweatherproject.repositories.WeatherSensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
@@ -30,10 +24,10 @@ public class SensorDataController {
         return sensorDataRepository.findAll();
     }
 
-    // GET Sensor Data by date
-    @GetMapping("/getDataByDate")
-    public void getSensorDataByDate(String date){
-        SensorData sd = sensorDataRepository.findItemByName(date);
+
+    @GetMapping("/getDataByDate/{date}")
+    public void getSensorDataByDate(@PathVariable("date") String date){
+        SensorData sd = this.sensorDataRepository.findItemByName(date);
         System.out.println(sd);
     }
 
