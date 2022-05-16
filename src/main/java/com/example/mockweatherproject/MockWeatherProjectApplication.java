@@ -1,10 +1,9 @@
 package com.example.mockweatherproject;
 
-import com.example.mockweatherproject.controllers.SensorDataController;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+// Launching point for the Spring Boot Application
 @SpringBootApplication
 public class MockWeatherProjectApplication{
 	public static void main(String[] args) {
