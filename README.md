@@ -34,3 +34,12 @@ and then enter command
     ```
 5. Connect Postman to the running database instance
 6. Use Postman to access the APIs
+
+## To update the collection
+1. Navigate to */src/main/resources*
+2. Inside application.properties, update to the collection you wish to use
+
+## To run the API's 
+1. Open Postman and configure connection
+2. Create Requests for Each API
+3. Run API by passing api path to postman, specifying additional arguments if needed
