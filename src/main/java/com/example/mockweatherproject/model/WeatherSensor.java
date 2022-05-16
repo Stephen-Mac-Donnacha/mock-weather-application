@@ -22,6 +22,7 @@ public class WeatherSensor {
     }
 
     // Getter and setter methods for the class fields
+    // With each setter, checking to make sure null values aren't being entered
     public String getId() {
         return id;
     }
