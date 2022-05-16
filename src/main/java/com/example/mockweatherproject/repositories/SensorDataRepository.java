@@ -7,8 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+// Repository interface for the Sensor Data, defines the behaviour for the Data Sensor Class
 @Repository
 public interface SensorDataRepository extends MongoRepository<SensorData, String> {
     @Query("{date:'?0'}")
-    SensorData findItemByName(String date);
+    SensorData findItemByName(String date); // Method to find an item given a name
 }
