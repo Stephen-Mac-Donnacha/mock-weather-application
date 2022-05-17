@@ -3,8 +3,16 @@ package com.example.mockweatherproject.controllers;
 import com.example.mockweatherproject.model.SensorData;
 import com.example.mockweatherproject.repositories.SensorDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.web.bind.annotation.*;
+
+import javax.management.Query;
 import java.util.List;
+import java.util.Optional;
+
+import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Filters.where;
 
 // Controller for the Sensor Data, defines behaviours for the Sensor Data Objects
 @RestController
@@ -16,6 +24,7 @@ public class SensorDataController {
     @PostMapping("/createSensorData")
     public void createSensorData(@RequestBody SensorData sensorData){
         SensorData sd = sensorDataRepository.insert(sensorData);
+        sensorDataRepository.save(sensorData);
         System.out.println(sd);
         System.out.println("Sensor Data added");
     }
@@ -26,12 +35,18 @@ public class SensorDataController {
         return sensorDataRepository.findAll();
     }
 
-
-    // HTTP GET request to return a specific SensorData given the date the data was collected on
-    @GetMapping("/getDataByDate/{date}")
-    public void getSensorDataByDate(@PathVariable("date") String date){
-        SensorData sd = this.sensorDataRepository.findItemByName(date);
-        System.out.println(sd);
+    // HTTP DELETE request to delete all items in the repository
+    @DeleteMapping("/clearAllSensorData")
+    public void cleanDatabase(){
+        sensorDataRepository.deleteAll();
+        System.out.println("Database cleared");
     }
 
+    @GetMapping("/getSensorDataById/{sensorId}")
+    public void getSensorDataById(@PathVariable("sensorId") long sensorId){
+        SensorData SensorData = new SensorData(sensorId,"02-01-2022",14.0,35.0,23.0);
+        Example<SensorData> example = Example.of(SensorData);
+        Optional<SensorData> actual = sensorDataRepository.findOne(example);
+        System.out.println(actual);
+    }
 }
