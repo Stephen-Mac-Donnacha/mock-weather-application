@@ -3,13 +3,17 @@ package com.example.mockweatherproject.model;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "weather-data-db") // Define collection for the data to be stored in
 public class SensorData {
     @Id
-    private String date; // @Id signifies this will act as our primary key
+    private long sensorId; // @Id signifies this will act as our primary key
+
+    private String date;
     private double temp;
     private double humidity;
     private double windTemp;
@@ -19,8 +23,10 @@ public class SensorData {
     private HashMap<String, List<Double>> dataHash = new HashMap<>(); // Map a String (i.e. date, to the List of values / data for that day
 
     // Constructor for the SensorData class
-    public SensorData(double temp, double humidity, double windTemp){
+    public SensorData(long sensorId, String date, double temp, double humidity, double windTemp){
         super();
+        this.date = date;
+        this.sensorId = sensorId;
         this.temp = temp;
         this.humidity = humidity;
         this.windTemp = windTemp;
@@ -28,6 +34,10 @@ public class SensorData {
 
     // Getters and setters for each variable
     // Try / Catch blocks added to each setter for input validation
+    public long getSensorId() {
+        return sensorId;
+    }
+
     public double getTemp() {
         return temp;
     }
@@ -81,7 +91,8 @@ public class SensorData {
     @Override
     public String toString() {
         return "SensorData{" +
-                "date='" + date + '\'' +
+                "sensorId=" + sensorId +
+                ", date='" + date + '\'' +
                 ", temp=" + temp +
                 ", humidity=" + humidity +
                 ", windTemp=" + windTemp +
